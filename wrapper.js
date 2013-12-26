@@ -1,7 +1,6 @@
 // Typescript (JS) wrapper for SocketStream 0.3
 
-var fs = require('fs'),
-tsapi = require('typescript.api');
+var tsapi = require('typescript.api');
 
 // Build a javascript error from the TS Diagnostics object returned by the TS compiler
 function makeTSError (units) {
