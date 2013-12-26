@@ -1,0 +1,17 @@
+{
+  "name": "ss-typescript",
+  "author": "Colter McQuay <colter.mcquay@gmail.com",
+  "description": "Typescript wrapper for SocketStream 0.3",
+  "main": "./wrapper.js",
+  "version": "0.1",
+  "repository": {
+    "type" : "git",
+    "url": "https://github.com/cjam/ss-typescript.git"
+  },
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "dependencies": {
+    "typescript.api": "0.7.7"
+  }
+}
