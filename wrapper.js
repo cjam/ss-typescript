@@ -48,7 +48,6 @@ exports.init = function(root, config) {
 						console.log("compile error");
 						handleError("Typescript Compilation Error in: "+path, makeTSError(compiled), cb);
 					}else{
-						// default to the first unit
 						var compiledUnit = null;
 						
 						// Need to loop through all of the compiled units and find the content of the script
