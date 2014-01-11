@@ -10,7 +10,7 @@ Add `ss-typescript` to your application's `package.json` file and then add this 
 ss.client.formatters.add(require('ss-typescript'));
 ```
 
-*** Note: ***
+#### Remarks
 The Typescript.api module does not automatically reference the lib.d.ts file which describes javascript capabilities of the browser
 (see [Here](https://npmjs.org/package/typescript.api#declarations) for details).
 
