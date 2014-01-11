@@ -20,6 +20,10 @@ function handleError(message, error, callback){
 	throw new Error(error);
 }
 
+function handleWarning(message){
+	console.log(String.prototype.hasOwnProperty('yellow') && message.yellow || message);
+}
+
 exports.init = function(root, config) {
 
   return {
@@ -44,10 +48,25 @@ exports.init = function(root, config) {
 						console.log("compile error");
 						handleError("Typescript Compilation Error in: "+path, makeTSError(compiled), cb);
 					}else{
-						if(compiled[0] && compiled[0].content){
-							cb(compiled[0].content);
+						// default to the first unit
+						var compiledUnit = null;
+						
+						// Need to loop through all of the compiled units and find the content of the script
+						// we're actually compiling ( will compile all references, dependencies, etc)
+						for(var i=0; i< compiled.length; ++i){
+							var unit = compiled[i];
+							if(unit && unit.script && unit.script.name && unit.script.name == path){
+								compiledUnit = unit;
+								break;
+							}
+						}
+						
+						// if there is no content, then issue a warning and return a blank string
+						if(compiledUnit && compiledUnit.content){
+							cb(compiledUnit.content);
 						}else{
-							handleError("Unknown Error.", new Error("Compiled content is missing from the compiled typescript object"), cb);
+							handleWarning("Compiled content is empty for '"+path+"'");
+							cb("");
 						}
 					}				
 				});			
